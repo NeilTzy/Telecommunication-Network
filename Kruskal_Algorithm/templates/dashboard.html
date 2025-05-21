@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telecommunications Network Planner</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>📡 Telecommunications Network Planner</h1>
+      <p class="subtitle">Design a cost-efficient telecom network using Kruskal’s Algorithm</p>
+    </header>
+
+    <main class="main-content">
+      <section class="graph-area">
+        <canvas id="graphCanvas"></canvas>
+        <p class="graph-hint">💡 Click on towers and fiber links to explore the network</p>
+        <p><strong>Legend:</strong> <span style="color:green;">Green</span> = Installed Link, <span style="color:gray;">Gray</span> = Unused</p>
+      </section>
+
+      <aside class="sidebar">
+        <div class="controls">
+          <h2>🧭 Planning Controls</h2>
+          <button class="btn" id="startBtn">📶 Start Planning</button>
+          <button class="btn" id="stepBtn">🔍 Step Through</button>
+          <button class="btn" id="resetBtn">🔁 Reset Network</button>
+
+          <label for="speedSlider">⏱ Simulation Speed:</label>
+          <input type="range" id="speedSlider" min="0.5" max="2" step="0.1" value="1">
+        </div>
+
+        <div class="info-box">
+          <h2>📊 Network Info</h2>
+          <ul id="graphInfo">
+            <li><strong>Towers:</strong> <span>--</span></li>
+            <li><strong>Possible Links:</strong> <span>--</span></li>
+            <li><strong>Total Cost:</strong> <span>--</span></li>
+            <li><strong>Installed Links:</strong> <span>--</span></li>
+          </ul>
+        </div>
+
+        <div class="log-box">
+          <h2>📝 Planning Log</h2>
+          <div id="logOutput" class="log-output">
+            <!-- Logs appear here -->
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      &copy; 2025 Telecommunications Network Planner — Educational Use Only
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
