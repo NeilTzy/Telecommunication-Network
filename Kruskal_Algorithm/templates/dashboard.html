@@ -24,6 +24,14 @@
       <aside class="sidebar">
         <div class="controls">
           <h2>🧭 Planning Controls</h2>
+          <label for="datasetSelect">🌐 Select Case Study Dataset:</label>
+          <select id="datasetSelector" class="btn">
+            <option value="random">🔀 Random Network</option>
+            <option value="luzon">📍 Luzon</option>
+            <option value="visayas">📍 Visayas</option>
+            <option value="mindanao">📍Mindanao</option>
+          </select>
+
           <button class="btn" id="startBtn">📶 Start Planning</button>
           <button class="btn" id="stepBtn">🔍 Step Through</button>
           <button class="btn" id="resetBtn">🔁 Reset Network</button>
@@ -55,7 +63,8 @@
       &copy; 2025 Telecommunications Network Planner — Educational Use Only
     </footer>
   </div>
-
+  
+  <script src="{{ url_for('static', filename='datasets.js') }}"></script>
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
