@@ -115,10 +115,11 @@ function exportMST() {
   const data = {
     totalCost: mstCost,
     mstEdges: mst.map(e => ({
-      from: `T${e.u}`,
-      to: `T${e.v}`,
+      from: nodes[e.u].name || `T${e.u + 1}`,
+      to: nodes[e.v].name || `T${e.v + 1}`,
       weight: e.weight
     }))
+
   };
   const blob = new Blob([JSON.stringify(data, null, 2)], {
     type: "application/json"
