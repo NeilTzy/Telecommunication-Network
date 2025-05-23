@@ -216,7 +216,7 @@ function drawGraph() {
     ctx.font = "12px Poppins";
     ctx.textAlign = "center";
     ctx.textBaseline = "top";
-    ctx.fillText(`T${node.id}`, node.x, node.y + 20);
+    ctx.fillText(node.name || `T${node.id + 1}`, node.x, node.y + 20);
   });
 }
 
@@ -263,7 +263,7 @@ function animateEdge(edge, callback) {
       ctx.font = "12px Poppins";
       ctx.textAlign = "center";
       ctx.textBaseline = "top";
-      ctx.fillText(`T${node.id}`, node.x, node.y + 20);
+      ctx.fillText(node.name || `T${node.id + 1}`, node.x, node.y + 20);
     });
 
     step++;
@@ -314,7 +314,10 @@ function stepForward() {
     union(edge.u, edge.v);
     mst.push(edge);
     mstCost += edge.weight;
-    log(`✔️ Connecting T${edge.u} to T${edge.v} — cost: ${edge.weight}`);
+    const nameU = nodes[edge.u].name || `T${edge.u + 1}`;
+    const nameV = nodes[edge.v].name || `T${edge.v + 1}`;
+    log(`✔️ Connecting ${nameU} to ${nameV} — cost: ${edge.weight}`);
+
     isAnimating = true;
 
     // Animate connection
@@ -325,7 +328,10 @@ function stepForward() {
       isAnimating = false;
     });
   } else {
-    log(`❌ Skipped T${edge.u} - T${edge.v} (Cycle detected)`);
+    const nameU = nodes[edge.u].name || `T${edge.u + 1}`;
+    const nameV = nodes[edge.v].name || `T${edge.v + 1}`;
+    log(`❌ Skipped ${nameU} - ${nameV} (Cycle detected)`);
+
     drawGraph();
     updateGraphInfo();
   }
